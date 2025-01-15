@@ -41,7 +41,7 @@ async function parseKwork(projectUrl: string): Promise<ProjectDetails> {
       };
     });
 
-    // await browser.close();
+    await browser.close();
 
     if (!projectDetails) {
       throw new Error('Не удалось найти детали проекта');
