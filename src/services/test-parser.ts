@@ -1,4 +1,4 @@
-import 'dotenv/config'
+import 'dotenv/config';
 import parseKwork from './kwork-parser.ts';
 import analyzeProjectWithOpenAI from './openai-service.ts';
 
@@ -11,8 +11,9 @@ async function main() {
     console.log('Детали проекта:', data);
 
     // Добавляем анализ OpenAI
-    const analysis = await analyzeProjectWithOpenAI({ 
-      projectDetails: data.additionalDetails 
+    const analysis = await analyzeProjectWithOpenAI({
+      projectDetails: data.additionalDetails,
+      exercise: 'Ты помощник для анализа проектов на бирже фриланса. Проанализируй детали проекта.',
     });
 
     console.log('Анализ проекта:', analysis);
