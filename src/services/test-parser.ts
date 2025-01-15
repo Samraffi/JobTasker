@@ -1,4 +1,6 @@
+import 'dotenv/config'
 import parseKwork from './kwork-parser.ts';
+import analyzeProjectWithOpenAI from './openai-service.ts';
 
 async function main() {
   try {
@@ -7,6 +9,13 @@ async function main() {
 
     console.log('Парсинг завершен!');
     console.log('Детали проекта:', data);
+
+    // Добавляем анализ OpenAI
+    const analysis = await analyzeProjectWithOpenAI({ 
+      projectDetails: data.additionalDetails 
+    });
+
+    console.log('Анализ проекта:', analysis);
   } catch (error) {
     console.error(
       'Ошибка:',
@@ -18,7 +27,6 @@ async function main() {
 main()
   .then(() => {
     console.log('Программа завершена успешно.');
-    // process.exit(0);
   })
   .catch((error) => {
     console.error('Критическая ошибка:', error);
