@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "parse": "ts-node src/services/parser/hh-parser.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",
@@ -16,7 +17,8 @@
     "openai": "^4.78.1",
     "puppeteer": "^24.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
