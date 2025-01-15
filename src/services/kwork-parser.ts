@@ -1,4 +1,3 @@
-import { log } from 'console';
 import puppeteer from 'puppeteer-core';
 
 interface ProjectDetails {
