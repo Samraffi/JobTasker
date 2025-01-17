@@ -1,41 +1,29 @@
 {
-  "name": "ai-job-monitoring",
+  "name": "nextjs13-cors",
   "version": "0.1.0",
   "private": true,
-  "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "format": "prettier --write .",
-    "parse:kwork": "node --experimental-loader ts-node/esm src/services/kwork-parser.ts",
-    "parse:test": "node --experimental-loader ts-node/esm src/services/test-parser.ts"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^6.2.1",
-    "@types/dotenv": "^6.1.1",
-    "dotenv": "^16.4.7",
-    "next": "15.1.4",
+    "@types/node": "20.5.7",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "eslint": "8.48.0",
+    "eslint-config-next": "13.4.19",
+    "next": "^15.1.5",
     "openai": "^4.78.1",
-    "puppeteer-core": "^24.1.0",
+    "puppeteer": "^24.1.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-markdown": "^9.0.3",
+    "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@swc/core": "^1.10.7",
-    "@swc/wasm": "^1.10.7",
-    "@types/node": "^20.17.13",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.1.4",
-    "postcss": "^8",
-    "prisma": "^6.2.1",
-    "tailwindcss": "^3.4.1",
-    "ts-node": "^10.9.2",
-    "typescript": "^5"
+    "@types/next": "^8.0.7",
+    "http-server": "^14.1.1"
   }
 }
