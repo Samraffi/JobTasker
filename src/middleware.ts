@@ -1,12 +1,32 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { v4 as uuidv4 } from 'uuid';
 
-// Обертка для middleware
-async function runMiddleware(req: NextRequest) {
-  const corsHeaders = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+// Безопасные заголовки безопасности
+const SECURITY_HEADERS = {
+  'X-XSS-Protection': '1; mode=block',
+  'X-Frame-Options': 'SAMEORIGIN',
+  'X-Content-Type-Options': 'nosniff',
+  'Referrer-Policy': 'strict-origin-when-cross-origin',
+  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains; preload'
+};
+
+// Логирование запросов
+function logRequest(req: NextRequest, requestId: string) {
+  console.log(JSON.stringify({
+    requestId,
+    method: req.method,
+    url: req.nextUrl.pathname,
+    timestamp: new Date().toISOString()
+  }));
+}
+
+async function handleCORS(req: NextRequest) {
+  const corsHeaders: Record<string, string> = {
+    'Access-Control-Allow-Origin': req.headers.get('origin') || '*',
+    'Access-Control-Allow-Methods': 'GET,HEAD,POST,PUT,DELETE,PATCH,OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
     'Access-Control-Allow-Credentials': 'true',
+    'Vary': 'Origin'
   };
 
   // Обработка preflight OPTIONS запросов
@@ -17,9 +37,15 @@ async function runMiddleware(req: NextRequest) {
     });
   }
 
-  // Для всех остальных запросов добавляем CORS-заголовки
   const response = NextResponse.next();
+  
+  // Установка CORS-заголовков
   Object.entries(corsHeaders).forEach(([key, value]) => {
+    response.headers.set(key, value);
+  });
+
+  // Установка заголовков безопасности
+  Object.entries(SECURITY_HEADERS).forEach(([key, value]) => {
     response.headers.set(key, value);
   });
 
@@ -27,9 +53,15 @@ async function runMiddleware(req: NextRequest) {
 }
 
 export async function middleware(request: NextRequest) {
-  // Применяем CORS ко всем API-маршрутам
+  const requestId = uuidv4();
+  request.headers.set('X-Request-ID', requestId);
+
+  // Логирование всех входящих запросов
+  logRequest(request, requestId);
+
+  // Применяем CORS и безопасность к API-маршрутам
   if (request.nextUrl.pathname.startsWith('/api/')) {
-    return await runMiddleware(request);
+    return await handleCORS(request);
   }
   
   return NextResponse.next();

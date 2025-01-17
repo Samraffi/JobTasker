@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Основные настройки проекта
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
@@ -17,7 +18,7 @@ const nextConfig = {
       };
     }
     return config;
-  },
+  }
 };
 
 export default nextConfig;
