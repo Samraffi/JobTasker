@@ -1,7 +1,11 @@
 # Next.js 13 CORS Configuration Example
 
+Current Date and Time (UTC - YYYY-MM-DD HH:MM:SS formatted): 2025-01-26 09:49:04
+Current User's Login: Samraffi
+
 ## О проекте
-Пример реализации и настройки CORS (Cross-Origin Resource Sharing) в Next.js 13 с использованием App Router. Проект демонстрирует различные подходы к настройке CORS в современном Next.js приложении.
+
+JobTasker - это современное приложение на Next.js 13, разработанное для мониторинга задач с использованием AI. Проект включает в себя полную настройку CORS и оптимизированную структуру API.
 
 ## Технологии
 - Next.js 13 с App Router
