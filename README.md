@@ -1,13 +1,12 @@
-# JobTasker - AI Job Monitoring System
+# Next.js 13 CORS Configuration Example
 
 ## О проекте
-JobTasker - это современное приложение на Next.js 13, разработанное для мониторинга задач с использованием AI. Проект включает в себя полную настройку CORS и оптимизированную структуру API.
+Пример реализации и настройки CORS (Cross-Origin Resource Sharing) в Next.js 13 с использованием App Router. Проект демонстрирует различные подходы к настройке CORS в современном Next.js приложении.
 
 ## Технологии
 - Next.js 13 с App Router
 - TypeScript
-- CORS конфигурация
-- AI интеграция
+- CORS (различные методы реализации)
 
 ## Требования
 - Node.js v18.17.1 или выше
