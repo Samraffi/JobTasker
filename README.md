@@ -1,66 +1,61 @@
-# NextJS13 AppRouter Cors Configuration
+# JobTasker - AI Job Monitoring System
 
-A simple example of how to configure CORS in a NextJS 13 app using AppRouter.
+## О проекте
+JobTasker - это современное приложение на Next.js 13, разработанное для мониторинга задач с использованием AI. Проект включает в себя полную настройку CORS и оптимизированную структуру API.
 
----
+## Технологии
+- Next.js 13 с App Router
+- TypeScript
+- CORS конфигурация
+- AI интеграция
 
-## Tutorial
+## Требования
+- Node.js v18.17.1 или выше
+- pnpm (предпочтительный пакетный менеджер)
 
-This repo is part of tutorial article. You can find the Medium article here: [NextJS 13 AppRouter Tutorial]([TBD](https://codingwithmanny.medium.com/3-ways-to-configure-cors-for-nextjs-13-app-router-api-route-handlers-427e10929818))
+## Установка и запуск
 
-[![NextJS App Router Working With Cors](README/nextjs-cors-approuter.png)](https://codingwithmanny.medium.com/3-ways-to-configure-cors-for-nextjs-13-app-router-api-route-handlers-427e10929818)
-
-
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- NVM or [NodeJS v18.17.1](https://nodejs.org/en/download/)
-- pnpm
-
-### Installation
-
+### Установка зависимостей
 ```bash
-#FROM: /
-
 pnpm install
-```
 
-### NextJS Server
-
-```bash
-#FROM: /
-
+### Запуск сервера разработки
+bash
 pnpm dev
-```
-
-### Client-Side App Server
-
-```bash
-#FROM: /
-
+### Запуск клиентского приложения
+bash
 pnpm client
-```
+### Конфигурация CORS
+В проекте реализованы три способа настройки CORS:
 
----
+### Next.js Config
 
-## CORS Configurations
+#### Расположение: next.config.js
+Базовая конфигурация на уровне Next.js
+Route Handler
 
-### Option 1 - NextJS Config
+#### Расположение: pages/api/users/route.ts
+Настройка CORS для отдельных API маршрутов
+Middleware
 
-You can find those cors configurations in `next.config.js`.
+#### Расположение: middleware.ts
+Глобальная конфигурация CORS через middleware
+Структура проекта
+Code
+JobTasker/
+├── src/
+│   ├── app/         # Основные компоненты приложения
+│   ├── api/         # API маршруты
+│   └── lib/         # Общие утилиты и конфигурации
+├── public/          # Статические файлы
+└── config/          # Конфигурационные файлы
 
-### Option 2 - Route Handler
+#### Возможности
+Мониторинг задач с AI интеграцией
+Продвинутая обработка CORS
+Типизированный API с TypeScript
+Оптимизированная структура проекта
 
-You can find those cors configurations in `pages/api/users/route.ts`.
-
-### Option 3 - Middleware CORS Configurations
-
-You can find those cors configurations in `middleware.ts`.
-
----
-
-built by [@codingwithmanny](https://www.x.com/codingwithmanny)
+#### Разработка
+При внесении изменений следуйте существующей структуре кода
+Используйте TypeScript для новых компонентов
