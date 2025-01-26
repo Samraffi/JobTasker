@@ -1,4 +1,4 @@
-# Next.js 15 CORS Configuration Example
+# JobTasker
 
 Current Date and Time (UTC - YYYY-MM-DD HH:MM:SS formatted): 2025-01-26 09:49:04
 Current User's Login: Samraffi
