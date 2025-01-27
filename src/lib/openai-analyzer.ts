@@ -48,6 +48,6 @@ export async function analyzeProject(projectDetails: ProjectDetails): Promise<Pr
   return {
     summary: insights,
     complexity: complexityMatch ? parseInt(complexityMatch[1], 10) : undefined,
-    recommendedSkills: skillsMatch ? skillsMatch[1].split(',').map(s => s.trim()) : undefined
+    recommendedSkills: skillsMatch ? skillsMatch[1].split(',').map((s: string) => s.trim()) : undefined
   };
 }

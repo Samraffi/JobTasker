@@ -9,7 +9,7 @@ import { deleteProject } from '@/app/actions/projects'
 interface ProjectCardProps {
   id: string
   title: string
-  description: string
+  description?: string | null
   createdAt: Date
 }
 
