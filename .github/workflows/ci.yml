@@ -65,6 +65,15 @@ jobs:
       
     - name: Lint
       run: pnpm lint
+    - name: Lint fix
+      run: |
+        echo "Attempting to fix lint issues..."
+        pnpm lint --fix || true
+        
+    - name: Lint check
+      run: |
+        echo "Checking remaining lint issues..."
+        pnpm lint
       
     - name: Build
       run: pnpm build
