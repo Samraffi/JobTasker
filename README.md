@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 246019693d90fecb2345a28fefa483a024411f5b
 # JobTasker
 
 ## О проекте
@@ -30,15 +33,21 @@ JobTasker — это интеллектуальная система для ра
 6. **Проект-менеджер**
    - Координация процессов
    - Контроль выполнения задач
+<<<<<<< HEAD
 =======
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 >>>>>>> a94709c559daaf20e19a9e059c53e3421377af36
+=======
+>>>>>>> 246019693d90fecb2345a28fefa483a024411f5b
 
 7. **Ассистент разработчика**
    - Техническая реализация
    - Подготовка решений
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 246019693d90fecb2345a28fefa483a024411f5b
 ## Технологический стек
 - Next.js 15
 - OpenAI API для ролевой модели AI
@@ -60,9 +69,12 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 - Реализация чат-интерфейса для взаимодействия с разными ролями
 - Интеграция с OpenAI для ролевой модели
 - Оптимизация сбора данных с Kwork# JobTasker
+<<<<<<< HEAD
 =======
 First, run the development server:
 >>>>>>> a94709c559daaf20e19a9e059c53e3421377af36
+=======
+>>>>>>> 246019693d90fecb2345a28fefa483a024411f5b
 
 ## Требования
 - Node.js (версия указать актуальную)
@@ -73,6 +85,9 @@ First, run the development server:
 ### Установка зависимостей
 ```bash
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 246019693d90fecb2345a28fefa483a024411f5b
 npm install
 
 ### Запуск сервера разработки
@@ -115,6 +130,7 @@ JobTasker/
 #### Разработка
 При внесении изменений следуйте существующей структуре кода
 Используйте TypeScript для новых компонентов
+<<<<<<< HEAD
 =======
 npm run dev
 # or
@@ -146,3 +162,5 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 >>>>>>> a94709c559daaf20e19a9e059c53e3421377af36
+=======
+>>>>>>> 246019693d90fecb2345a28fefa483a024411f5b
