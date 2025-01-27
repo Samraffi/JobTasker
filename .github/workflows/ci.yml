@@ -44,13 +44,24 @@ jobs:
           ${{ runner.os }}-pnpm-store-
 
     - name: Install dependencies
-      run: pnpm install
+      run: |
+        pnpm install
+        pnpm add puppeteer@latest
+        pnpm add -D @types/puppeteer@latest
+        pnpm add openai@latest
+
+    - name: Check installed versions
+      run: |
+        echo "Installed package versions:"
+        pnpm list puppeteer @types/puppeteer openai
 
     - name: Generate Prisma Client
       run: pnpm prisma generate
       
     - name: Type check
-      run: pnpm type-check
+      run: |
+        echo "Checking TypeScript types..."
+        pnpm type-check || (echo "TypeScript errors found" && exit 1)
       
     - name: Lint
       run: pnpm lint
