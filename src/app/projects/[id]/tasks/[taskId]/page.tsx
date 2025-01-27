@@ -2,21 +2,20 @@
 import { getTask } from '@/app/actions/tasks'
 import Link from 'next/link'
 import { ChevronLeft } from 'lucide-react'
-import { ReactNode } from 'react' // добавляем импорт ReactNode
 import TaskStatusSelect from '@/components/tasks/TaskStatusSelect'
 import { TaskStatus } from '@/types/task'
 
-// Правильно определяем типы
-type PageProps = {
-  params: {
+type Props = {
+  params: Promise<{
     id: string
     taskId: string
-  }
+  }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-// Явно указываем тип возвращаемого значения Promise<ReactNode>
-export default async function TaskPage({ params }: PageProps): Promise<ReactNode> {
-  const task = await getTask(params.taskId)
+export default async function TaskPage({ params }: Props) {
+  const id = await getTask((await params).id)
+  const task = await getTask((await params).taskId)
 
   if (!task) {
     return <div>Task not found</div>
@@ -26,7 +25,7 @@ export default async function TaskPage({ params }: PageProps): Promise<ReactNode
     <div className="container mx-auto p-4">
       <div className="mb-6">
         <Link
-          href={`/projects/${params.id}`}
+          href={`/projects/${id}`}
           className="inline-flex items-center text-sm text-gray-600 hover:text-gray-900"
         >
           <ChevronLeft className="w-4 h-4 mr-1" />

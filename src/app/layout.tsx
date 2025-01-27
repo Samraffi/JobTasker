@@ -3,10 +3,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google"
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import AuthProvider from '@/components/providers/AuthProvider'
-import { getServerSession } from "next-auth"
-import { authOptions } from "@/lib/auth"
-import "./globals.css"
+// import AuthProvider from '@/components/providers/AuthProvider'
+import { NextAuthProvider } from '@/providers/auth'
+// import { getServerSession } from 'next-auth'
+// import { authOptions } from '@/lib/auth'
+import './globals.css'
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,18 +21,16 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const session = await getServerSession(authOptions)
+  // const session = await getServerSession(authOptions)
 
   return (
     <html lang="en" className={inter.className}>
-      <body className={inter.className + " min-h-screen flex flex-col"}>
-        <AuthProvider session={session}>
+      <body className={`${inter.className} min-h-screen flex flex-col`}>
+        <NextAuthProvider>
           <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
+          <main className="flex-grow">{children}</main>
           <Footer />
-        </AuthProvider>
+        </NextAuthProvider>
       </body>
     </html>
   )

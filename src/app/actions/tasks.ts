@@ -7,9 +7,11 @@ import { prisma } from '@/lib/prisma'
 import { authOptions } from '@/lib/auth'
 import { taskSchema, type TaskFormData } from '@/lib/validations'
 import { TaskStatus } from '@/types/task'
+import { User } from '@/types/user'
 
 export async function createTask(data: TaskFormData) {
   const session = await getServerSession(authOptions)
+  const user = session?.user as User | undefined;
   
   if (!session?.user) {
     return {
@@ -24,7 +26,7 @@ export async function createTask(data: TaskFormData) {
     await prisma.task.create({
       data: {
         ...validatedData,
-        userId: session.user.id,
+        userId: user?.id ?? '',
       },
     })
 
@@ -42,6 +44,8 @@ export async function createTask(data: TaskFormData) {
 export async function updateTaskStatus(taskId: string, status: TaskStatus) {
   try {
     const session = await getServerSession(authOptions)
+    const user = session?.user as User | undefined;
+
     
     if (!session?.user) {
       return { error: 'Unauthorized' }
@@ -50,7 +54,7 @@ export async function updateTaskStatus(taskId: string, status: TaskStatus) {
     const task = await prisma.task.findFirst({
       where: {
         id: taskId,
-        userId: session.user.id
+        userId: user?.id
       }
     })
 
@@ -80,6 +84,8 @@ export async function updateTaskStatus(taskId: string, status: TaskStatus) {
 export async function getTask(taskId: string) {
   try {
     const session = await getServerSession(authOptions)
+    const user = session?.user as User | undefined;
+
     
     if (!session?.user) {
       return null
@@ -88,7 +94,7 @@ export async function getTask(taskId: string) {
     const task = await prisma.task.findFirst({
       where: {
         id: taskId,
-        userId: session.user.id
+        userId: user?.id
       }
     })
 

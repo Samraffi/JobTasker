@@ -36,10 +36,10 @@ export default function ProjectCard({
 
       const response = await deleteProject(id)
 
-      if (response.success) {
+      if (response) {
         setIsDeleteModalOpen(false)
       } else {
-        setError(response.message || 'Failed to delete project')
+        setError((response as { message: string })?.message || 'Failed to delete project')
       }
     } catch (err) {
       console.error('Delete error:', err)

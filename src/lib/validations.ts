@@ -18,6 +18,7 @@ export const taskSchema = z.object({
   priority: z.enum(['LOW', 'MEDIUM', 'HIGH']).default('MEDIUM'),
   dueDate: z.date().optional(),
   projectId: z.string(),
+  userId: z.string().optional(),
 })
 
 

@@ -35,7 +35,9 @@ export default function Navigation() {
           <div className="flex items-center space-x-4">
             <span className="text-sm text-gray-600">{session.user?.email}</span>
             <button
-              onClick={() => signOut({ callbackUrl: '/' })}
+              onClick={() => {
+                signOut({ callbackUrl: '/' })
+              }}
               className="text-sm text-red-600 hover:text-red-700 transition-colors"
             >
               Выйти

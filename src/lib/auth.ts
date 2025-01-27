@@ -1,40 +1,40 @@
+// @/lib/auth.ts
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { NextAuthOptions, getServerSession } from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import { prisma } from "@/lib/prisma";
-
-// Добавляем типы для сессии
-declare module "next-auth" {
-  interface Session {
-    user: {
-      id: string;
-      name?: string | null;
-      email?: string | null;
-      image?: string | null;
-    };
-  }
-}
+import { Adapter } from "next-auth/adapters";
+import { User } from "@/types/user";
 
 export const authOptions: NextAuthOptions = {
-  // @ts-expect-error - Известная проблема совместимости типов между next-auth и prisma adapter
-  adapter: PrismaAdapter(prisma),
+  adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID!,
       clientSecret: process.env.GITHUB_SECRET!,
     }),
   ],
-  session: {
-    strategy: "jwt",
-  },
   callbacks: {
-    session: async ({ session, token }) => {
-      if (session?.user) {
-        session.user.id = token.sub!;
+    async session({ session, user }) {
+      if (session && session?.user) {
+        (session.user as User).id = user.id
       }
-      return session;
+      return session
+    },
+    async jwt({ token, user, account }) {
+      if (user) {
+        token.id = user.id
+      }
+      if (account) {
+        token.accessToken = account.access_token
+      }
+      return token
     },
   },
-};
+  session: {
+    strategy: 'jwt', // Меняем на JWT стратегию
+  },
+  debug: process.env.NODE_ENV === 'development',
+}
 
-export const auth = () => getServerSession(authOptions);
+export const getAuthSession = () => getServerSession(authOptions);
