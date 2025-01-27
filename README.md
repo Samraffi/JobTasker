@@ -1,66 +1,36 @@
-# NextJS13 AppRouter Cors Configuration
-
-A simple example of how to configure CORS in a NextJS 13 app using AppRouter.
-
----
-
-## Tutorial
-
-This repo is part of tutorial article. You can find the Medium article here: [NextJS 13 AppRouter Tutorial]([TBD](https://codingwithmanny.medium.com/3-ways-to-configure-cors-for-nextjs-13-app-router-api-route-handlers-427e10929818))
-
-[![NextJS App Router Working With Cors](README/nextjs-cors-approuter.png)](https://codingwithmanny.medium.com/3-ways-to-configure-cors-for-nextjs-13-app-router-api-route-handlers-427e10929818)
-
-
-
----
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-### Prerequisites
-
-- NVM or [NodeJS v18.17.1](https://nodejs.org/en/download/)
-- pnpm
-
-### Installation
+First, run the development server:
 
 ```bash
-#FROM: /
-
-pnpm install
-```
-
-### NextJS Server
-
-```bash
-#FROM: /
-
+npm run dev
+# or
+yarn dev
+# or
 pnpm dev
+# or
+bun dev
 ```
 
-### Client-Side App Server
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-#FROM: /
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-pnpm client
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
----
+## Learn More
 
-## CORS Configurations
+To learn more about Next.js, take a look at the following resources:
 
-### Option 1 - NextJS Config
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can find those cors configurations in `next.config.js`.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### Option 2 - Route Handler
+## Deploy on Vercel
 
-You can find those cors configurations in `pages/api/users/route.ts`.
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-### Option 3 - Middleware CORS Configurations
-
-You can find those cors configurations in `middleware.ts`.
-
----
-
-built by [@codingwithmanny](https://www.x.com/codingwithmanny)
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
