@@ -2,9 +2,16 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - develop
+      - 'feature/**'    # Для всех feature веток
+      - 'bugfix/**'     # Для всех bugfix веток
+      - 'release/**'    # Для всех release веток
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - develop
 
 jobs:
   test-and-build:
@@ -23,7 +30,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '20' # Обновили с 14.x до 20
+        node-version: '20'
         cache: 'npm'
     
     - name: Install dependencies
