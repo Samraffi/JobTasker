@@ -3,6 +3,8 @@ import ProjectCard from '@/components/projects/ProjectCard'
 import { getProjects } from '@/app/actions/projects'
 import CreateProjectButton from '@/components/projects/CreateProjectButton'
 
+export const dynamic = 'force-dynamic'
+
 export default async function ProjectsPage() {
   const projects = await getProjects()
 

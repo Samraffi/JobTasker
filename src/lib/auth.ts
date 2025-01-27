@@ -16,6 +16,7 @@ declare module "next-auth" {
 }
 
 export const authOptions: NextAuthOptions = {
+  // @ts-expect-error - Известная проблема совместимости типов между next-auth и prisma adapter
   adapter: PrismaAdapter(prisma),
   providers: [
     GithubProvider({

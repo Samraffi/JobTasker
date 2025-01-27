@@ -6,13 +6,13 @@ import { ChevronLeft } from 'lucide-react'
 import { Metadata } from 'next'
 
 type PageProps = {
-  params: { id: string }
-  searchParams?: { [key: string]: string | string[] | undefined }
+  params: Promise<{ id: string }>
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>
 }
 
-// @ts-ignore - Временное решение до фикса в Next.js 15+
-export async function generateMetadata(params: PageProps['params']): Promise<Metadata> {
-  const { id } = params
+export async function generateMetadata({ params }: { params: PageProps['params'] }): Promise<Metadata> {
+  const resolvedParams = await params
+  const { id } = resolvedParams
   const project = await getProject(id)
   return {
     title: project ? `Project: ${project.title}` : 'Project Not Found',
@@ -20,7 +20,8 @@ export async function generateMetadata(params: PageProps['params']): Promise<Met
 }
 
 export default async function ProjectPage({ params }: { params: PageProps['params'] }) {
-  const { id } = params
+  const resolvedParams = await params
+  const { id } = resolvedParams
   const project = await getProject(id)
 
   if (!project) {
