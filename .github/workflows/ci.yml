@@ -1,4 +1,23 @@
-steps:
+name: CI
+
+on:
+  push:
+    branches: [ main, develop, 'feature/**' ]
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    
+    env:
+      DATABASE_URL: "file:./test.db"
+      GITHUB_CLIENT_ID: "test-client-id"
+      GITHUB_CLIENT_SECRET: "test-client-secret"
+      NEXTAUTH_SECRET: "test-nextauth-secret"
+      NEXTAUTH_URL: "http://localhost:3000"
+
+    steps:
     - uses: actions/checkout@v4
     
     - name: Setup Node.js
@@ -11,14 +30,30 @@ steps:
       with:
         version: 8
 
-    - name: Install dependencies
+    - name: Get pnpm store directory
+      shell: bash
       run: |
-        pnpm install
-        pnpm add -D @types/puppeteer
-        pnpm add openai
+        echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+
+    - name: Setup pnpm cache
+      uses: actions/cache@v3
+      with:
+        path: ${{ env.STORE_PATH }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-
+
+    - name: Install dependencies
+      run: pnpm install
 
     - name: Generate Prisma Client
       run: pnpm prisma generate
       
     - name: Type check
       run: pnpm type-check
+      
+    - name: Lint
+      run: pnpm lint
+      
+    - name: Build
+      run: pnpm build
