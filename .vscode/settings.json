@@ -1,0 +1,20 @@
+{
+    "taskExplorer.excludeTask": [
+        "pre-launch[0-9]{2}\\.r(?:b|c)",
+        "Setup Project"
+    ],
+    "typescript.inlayHints.parameterTypes.enabled": true,
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+    "typescript.inlayHints.variableTypes.enabled": true,
+    "editor.inlayHints.enabled": "on",
+    "errorLens.enabledDiagnosticLevels": [
+        "error",
+        "warning",
+        "info"
+    ],
+    "errorLens.messageEnabled": true,
+    "errorLens.messageTemplate": "${message} [${source}]",
+    "errorLens.fontWeight": "bold",
+    "errorLens.margin": "8px",
+    "errorLens.messageBackgroundMode": "message"
+}
